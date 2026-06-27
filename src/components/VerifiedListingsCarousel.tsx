@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ShieldCheck, Star, MapPin, User, ChevronRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import OptimizedImage from "./OptimizedImage";
+import { useLanguage } from "../context/LanguageContext";
 
 const carouselListings = [
   {
@@ -61,6 +62,7 @@ export default function VerifiedListingsCarousel() {
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReduced = usePrefersReducedMotion();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -118,10 +120,10 @@ export default function VerifiedListingsCarousel() {
               Live Verified Catalog
             </span>
             <h2 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl lg:text-5xl">
-              Featured verified properties
+              {t("carousel.title")}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-xl">
-              Direct connection with owners. Zero brokerage fees. Click any card to view photos or inspect verification certificates.
+              {t("carousel.subtitle")}
             </p>
           </div>
 
@@ -206,12 +208,12 @@ export default function VerifiedListingsCarousel() {
                   
                   {/* Upper badges: Verified Tag & No Brokerage Tag */}
                   <div className="absolute top-5 left-5 flex flex-col gap-2 z-10">
-                    <div className="px-3.5 py-1.5 bg-primary text-primary-foreground text-[10px] font-extrabold rounded-full flex items-center space-x-1 uppercase tracking-wider shadow-md">
+                    <div className="px-3.5 py-1.5 bg-primary/90 backdrop-blur-xs text-primary-foreground text-[10px] font-extrabold rounded-full flex items-center space-x-1 uppercase tracking-wider shadow-md">
                       <ShieldCheck className="w-3.5 h-3.5 fill-current text-primary-foreground" />
-                      <span>Verified</span>
+                      <span>{t("carousel.badge_verified")}</span>
                     </div>
-                    <div className="px-3.5 py-1.5 bg-primary/95 text-primary-foreground text-[10px] font-extrabold rounded-full uppercase tracking-wider shadow-md">
-                      No Brokerage
+                    <div className="px-3.5 py-1.5 bg-primary-soft text-primary text-[10px] font-extrabold rounded-full uppercase tracking-wider border border-primary/20 shadow-md">
+                      {t("carousel.badge_no_brokerage")}
                     </div>
                   </div>
 
@@ -251,13 +253,13 @@ export default function VerifiedListingsCarousel() {
                       <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center">
                         <User className="w-3 h-3" />
                       </div>
-                      <span className="text-xs font-bold text-foreground">{item.ownerType}</span>
+                      <span className="text-xs font-bold text-foreground">{t("carousel.direct_owner")}</span>
                     </div>
                     <Link 
                       to="/verify" 
                       className="text-xs font-bold text-primary flex items-center space-x-1 hover:underline"
                     >
-                      <span>Verify Property</span>
+                      <span>{t("carousel.verify_property")}</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>

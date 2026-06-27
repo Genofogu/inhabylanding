@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import LivingBackground from "./components/LivingBackground";
 import { ThemeProvider } from "./context/ThemeContext";
+import { LanguageProvider } from "./context/LanguageContext";
 import HomePage from "./pages/HomePage";
 import PhotosPage from "./pages/PhotosPage";
 import VerifiedOwnersPage from "./pages/VerifiedOwnersPage";
@@ -52,10 +53,12 @@ function AppContent() {
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <AppContent />
-      </BrowserRouter>
+      <LanguageProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <AppContent />
+        </BrowserRouter>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

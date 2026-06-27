@@ -42,8 +42,6 @@ export default function FinalCTA() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <a 
                   href="https://inhaby.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:opacity-90 hover:shadow-xl hover:shadow-primary/25 transition-all text-center flex items-center justify-center text-sm"
                 >
                   <span>Get Started (Tenant Portal)</span>
@@ -52,8 +50,6 @@ export default function FinalCTA() {
                 
                 <a 
                   href="https://owner.inhaby.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 py-4 bg-transparent border border-primary/40 hover:border-primary text-primary font-bold rounded-2xl hover:bg-primary/10 transition-all text-center flex items-center justify-center text-sm"
                 >
                   <span>List Your Property</span>

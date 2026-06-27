@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { ShieldCheck, Star, Shield, Home, Sparkles, Check, ChevronRight, Heart } from "lucide-react";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import OptimizedImage from "./OptimizedImage";
+import { useLanguage } from "../context/LanguageContext";
 
 const stats = [
   { value: "15,000+", label: "Verified Homes", desc: "No fake listings" },
@@ -14,6 +15,7 @@ const stats = [
 export default function Hero() {
   const [isLoading, setIsLoading] = useState(true);
   const prefersReduced = usePrefersReducedMotion();
+  const { t } = useLanguage();
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [timeMs, setTimeMs] = useState(0);
@@ -138,29 +140,27 @@ export default function Hero() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="inline-flex items-center space-x-2 px-3 py-1 mb-3.5 md:mb-6 text-[10.5px] md:text-sm font-semibold tracking-wide text-primary uppercase bg-primary-soft rounded-full border border-primary/10">
-                <span>Currently live in Metro Cities</span>
+                <span>{t("hero.live")}</span>
               </div>
               
               <h1 className="mb-3.5 md:mb-4 text-[34px] font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] font-sans max-w-sm sm:max-w-md md:max-w-none mx-auto lg:mx-0">
-                Find trusted homes <br className="hidden sm:inline" />
-                with{" "}
+                {t("hero.title1")}<br className="hidden sm:inline" />
+                {t("hero.title2")}{" "}
                 <span className="text-primary relative inline-block">
-                  total clarity.
+                  {t("hero.title_accent")}
                   <span className="absolute bottom-1 left-0 w-full h-[6px] bg-primary/20 rounded-full" />
                 </span>
               </h1>
               
               <p className="mb-4.5 md:mb-6 text-[15px] sm:text-sm md:text-xl leading-relaxed text-muted-foreground font-medium max-w-sm sm:max-w-md md:max-w-xl mx-auto lg:mx-0">
-                <span className="md:hidden">Discover verified homes directly from owners—zero brokerage, zero surprises.</span>
-                <span className="hidden md:inline">Discover verified homes, connect directly with verified owners, and rent with confidence—without brokerage or hidden surprises.</span>
+                <span className="md:hidden">{t("hero.subtitle_mobile")}</span>
+                <span className="hidden md:inline">{t("hero.subtitle_desktop")}</span>
               </p>
               
               <div className="space-y-2 md:space-y-4 mb-3 md:mb-8 max-w-md mx-auto lg:mx-0">
                 <div className="flex flex-col space-y-1.5 sm:flex-row sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
                   <a 
                     href="https://inhaby.com" 
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="w-full sm:w-auto px-5 md:px-8 h-[48px] md:h-[52px] bg-primary text-primary-foreground rounded-xl font-bold hover:shadow-xl hover:shadow-primary/35 hover:-translate-y-0.5 active:translate-y-0 transition-all text-center flex items-center justify-center text-xs md:text-sm shadow-md"
                   >
                     Get Started
@@ -169,8 +169,6 @@ export default function Hero() {
                   
                   <a 
                     href="https://owner.inhaby.com" 
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="w-full sm:w-auto px-5 md:px-8 h-[48px] md:h-[52px] bg-background border border-primary/35 text-primary hover:bg-primary-soft hover:border-primary rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 transition-all text-center flex items-center justify-center text-xs md:text-sm shadow-xs"
                   >
                     List Your Property
@@ -181,8 +179,6 @@ export default function Hero() {
                 <div className="text-center lg:text-left">
                   <a 
                     href="https://owner.inhaby.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center text-[10px] md:text-[11px] font-bold text-muted-foreground hover:text-primary transition-colors group"
                   >
                     <span>Already own a property? List it in minutes →</span>

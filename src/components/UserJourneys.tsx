@@ -5,6 +5,7 @@ import {
   Upload, UserCheck, FileText, Camera, Award, Eye,
   ChevronLeft, ChevronRight
 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 const verificationSteps = [
   {
@@ -49,6 +50,7 @@ export default function UserJourneys() {
   const [activeTab, setActiveTab] = useState<"journey" | "verification">("journey");
   const [activeStep, setActiveStep] = useState(0);
   const [activeJourney, setActiveJourney] = useState<"renter" | "landlord">("renter");
+  const { t } = useLanguage();
 
   // 1. Auto switch journey and verification in every 9 sec
   useEffect(() => {
@@ -136,7 +138,7 @@ export default function UserJourneys() {
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Journeys
+              {t("journey.tab_journey").split(" ")[0]}
             </button>
             <button
               onClick={() => setActiveTab("verification")}
@@ -146,7 +148,7 @@ export default function UserJourneys() {
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Verification
+              {t("journey.tab_verification").split(" ")[0]}
             </button>
           </div>
 
@@ -231,8 +233,6 @@ export default function UserJourneys() {
 
                         <a
                           href="https://inhaby.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
                           className="w-full py-3.5 bg-primary hover:opacity-95 text-primary-foreground font-extrabold text-xs text-center flex items-center justify-center space-x-2 rounded-xl shadow-md shadow-primary/10"
                         >
                           <span>Get Started</span>
@@ -283,8 +283,6 @@ export default function UserJourneys() {
 
                         <a
                           href="https://owner.inhaby.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
                           className="w-full py-3.5 bg-background border border-primary/30 text-primary hover:text-primary-foreground hover:bg-primary font-extrabold text-xs text-center flex items-center justify-center space-x-2 rounded-xl transition-all"
                         >
                           <span>Go to Owner Portal</span>
@@ -421,7 +419,7 @@ export default function UserJourneys() {
 
                 <h3 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4 tracking-tight flex items-center">
                   <span className="mr-2">🏠</span>
-                  <span>Looking for a Home</span>
+                  <span>{t("journey.title_renter")}</span>
                 </h3>
                 <p className="text-muted-foreground text-sm font-semibold leading-relaxed mb-8">
                   Skip the agent fees. Discover thousands of verified flats, PGs, and houses. Communicate directly with deed-verified owners.
@@ -444,8 +442,6 @@ export default function UserJourneys() {
 
               <a
                 href="https://inhaby.com"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="w-full h-14 bg-primary hover:opacity-90 text-primary-foreground font-extrabold text-center flex items-center justify-center space-x-2 rounded-2xl shadow-lg shadow-primary/20 hover:shadow-xl transition-all hover:-translate-y-0.5"
               >
                 <span>Get Started</span>
@@ -475,7 +471,7 @@ export default function UserJourneys() {
 
                 <h3 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4 tracking-tight flex items-center">
                   <span className="mr-2">🏡</span>
-                  <span>List Your Property</span>
+                  <span>{t("journey.title_landlord")}</span>
                 </h3>
                 <p className="text-muted-foreground text-sm font-semibold leading-relaxed mb-8">
                   Publish listings to a massive pre-verified tenant base. Keep track of lead verifications, coordinate walkthroughs, and create legal digital leases.
@@ -498,8 +494,6 @@ export default function UserJourneys() {
 
               <a
                 href="https://owner.inhaby.com"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="w-full h-14 bg-background border border-primary/30 text-primary hover:text-primary-foreground hover:bg-primary font-extrabold text-center flex items-center justify-center space-x-2 rounded-2xl transition-all hover:-translate-y-0.5"
               >
                 <span>Go to Owner Portal</span>

@@ -471,8 +471,6 @@ export default function BlogPage() {
                     </button>
                     <a 
                       href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(SEO_METADATA.openGraphTitle)}`}
-                      target="_blank" 
-                      rel="noopener noreferrer"
                       className="py-2.5 bg-muted border border-border hover:bg-[#1DA1F2]/10 hover:text-[#1DA1F2] hover:border-[#1DA1F2]/20 rounded-xl font-bold text-[11px] text-foreground flex items-center justify-center space-x-1 transition-all"
                     >
                       <Twitter className="w-3.5 h-3.5" />
@@ -480,8 +478,6 @@ export default function BlogPage() {
                     </a>
                     <a 
                       href="https://linkedin.com"
-                      target="_blank" 
-                      rel="noopener noreferrer"
                       className="py-2.5 bg-muted border border-border hover:bg-[#0A66C2]/10 hover:text-[#0A66C2] hover:border-[#0A66C2]/20 rounded-xl font-bold text-[11px] text-foreground flex items-center justify-center space-x-1 transition-all"
                     >
                       <Linkedin className="w-3.5 h-3.5" />
@@ -913,11 +909,11 @@ export default function BlogPage() {
                         {AUTHOR.bio}
                       </p>
                       <div className="flex justify-center sm:justify-start space-x-3 text-xs font-bold pt-1">
-                        <a href={AUTHOR.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex items-center">
+                        <a href={AUTHOR.socials.twitter} className="text-muted-foreground hover:text-primary transition-colors flex items-center">
                           <Twitter className="w-3.5 h-3.5 mr-1" /> Twitter
                         </a>
                         <span className="text-border">|</span>
-                        <a href={AUTHOR.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex items-center">
+                        <a href={AUTHOR.socials.linkedin} className="text-muted-foreground hover:text-primary transition-colors flex items-center">
                           <Linkedin className="w-3.5 h-3.5 mr-1" /> LinkedIn
                         </a>
                       </div>
@@ -1057,16 +1053,12 @@ export default function BlogPage() {
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
                 <a 
                   href="https://inhaby.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 py-3.5 bg-primary text-primary-foreground hover:opacity-95 text-xs font-extrabold rounded-xl transition-all shadow-sm text-center"
                 >
                   Get Started (Tenant Portal)
                 </a>
                 <a 
                   href="https://owner.inhaby.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 py-3.5 bg-background border border-border hover:border-primary/50 text-foreground text-xs font-extrabold rounded-xl transition-all shadow-sm text-center"
                 >
                   List Your Property

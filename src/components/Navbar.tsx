@@ -3,9 +3,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -19,11 +21,11 @@ export default function Navbar() {
         
         {/* Center: Main Links (Desktop) */}
         <div className="hidden lg:flex items-center space-x-8 text-sm font-semibold text-muted-foreground">
-          <Link to="/savings" className="hover:text-primary transition-colors">Savings Calculator</Link>
-          <a href="https://careers.inhaby.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Careers</a>
-          <Link to="/pricing" className="hover:text-primary transition-colors">Pricing</Link>
-          <Link to="/blog" className="hover:text-primary transition-colors">Trust Blog</Link>
-          <a href="https://help.inhaby.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Help</a>
+          <Link to="/savings" className="hover:text-primary transition-colors">{t("nav.savings")}</Link>
+          <a href="https://careers.inhaby.com" className="hover:text-primary transition-colors">{t("nav.careers")}</a>
+          <Link to="/pricing" className="hover:text-primary transition-colors">{t("nav.pricing")}</Link>
+          <Link to="/blog" className="hover:text-primary transition-colors">{t("nav.blog")}</Link>
+          <a href="https://help.inhaby.com" className="hover:text-primary transition-colors">{t("nav.help")}</a>
         </div>
         
         {/* Right / Mobile & Tablet Actions: Login & Hamburger */}
@@ -31,13 +33,11 @@ export default function Navbar() {
           {/* Primary Login Button (Visible on Desktop, Tablet, and Mobile) */}
           <motion.a
             href="https://inhaby.com"
-            target="_blank"
-            rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="px-5 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-black text-primary-foreground bg-primary rounded-xl shadow-md shadow-primary/15 hover:opacity-95 transition-all flex items-center justify-center whitespace-nowrap cursor-pointer"
           >
-            Login
+            {t("nav.login")}
           </motion.a>
 
           {/* Hamburger Menu (Visible on lg-hidden, i.e., Tablet and Mobile) */}
@@ -92,39 +92,35 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="text-base font-bold text-foreground hover:text-primary transition-colors py-3 px-2 rounded-xl hover:bg-muted flex items-center"
                   >
-                    Savings Calculator
+                    {t("nav.savings")}
                   </Link>
                   <a
                     href="https://careers.inhaby.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
                     className="text-base font-bold text-foreground hover:text-primary transition-colors py-3 px-2 rounded-xl hover:bg-muted flex items-center"
                   >
-                    Careers
+                    {t("nav.careers")}
                   </a>
                   <Link
                     to="/pricing"
                     onClick={() => setIsOpen(false)}
                     className="text-base font-bold text-foreground hover:text-primary transition-colors py-3 px-2 rounded-xl hover:bg-muted flex items-center"
                   >
-                    Pricing
+                    {t("nav.pricing")}
                   </Link>
                   <Link
                     to="/blog"
                     onClick={() => setIsOpen(false)}
                     className="text-base font-bold text-foreground hover:text-primary transition-colors py-3 px-2 rounded-xl hover:bg-muted flex items-center"
                   >
-                    Trust Blog
+                    {t("nav.blog")}
                   </Link>
                   <a
                     href="https://help.inhaby.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
                     className="text-base font-bold text-foreground hover:text-primary transition-colors py-3 px-2 rounded-xl hover:bg-muted flex items-center"
                   >
-                    Help
+                    {t("nav.help")}
                   </a>
                 </div>
               </div>

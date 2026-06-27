@@ -409,15 +409,15 @@ export default function DemoPage() {
   });
 
   const handleLoginClick = () => {
-    // Redirect parent window or open in blank tab
+    // Redirect parent window or current window
     try {
       if (window.parent && window.parent !== window) {
         window.parent.location.href = "https://inhaby.com";
       } else {
-        window.open("https://inhaby.com", "_blank");
+        window.location.href = "https://inhaby.com";
       }
     } catch (e) {
-      window.open("https://inhaby.com", "_blank");
+      window.location.href = "https://inhaby.com";
     }
   };
 

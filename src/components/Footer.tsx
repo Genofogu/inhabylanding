@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { Twitter, Instagram, Linkedin, Github, Mail, Globe, Sun, Moon, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage, languages } from "../context/LanguageContext";
 import Logo from "./Logo";
 
 const footerColumns = [
@@ -46,9 +47,11 @@ const socialLinks = [
 
 export default function Footer() {
   const { theme, toggleTheme } = useTheme();
-  const [lang, setLang] = useState("English");
+  const { language, setLanguage, t } = useLanguage();
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
+
+  const currentLanguage = languages.find((l) => l.code === language) || languages[0];
 
   const mobileColumns = [
     ...footerColumns,
@@ -144,8 +147,6 @@ export default function Footer() {
                             {link.external ? (
                               <a 
                                 href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors block py-0.5"
                               >
                                 {link.name}
@@ -180,8 +181,6 @@ export default function Footer() {
                     {link.external ? (
                       <a 
                         href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors"
                       >
                         {link.name}
@@ -224,24 +223,28 @@ export default function Footer() {
             <div className="relative">
               <button 
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-                className="flex items-center space-x-1.5 cursor-pointer hover:text-primary transition-colors"
+                className="flex items-center space-x-1.5 cursor-pointer hover:text-primary transition-colors font-bold"
               >
-                <Globe className="w-3.5 h-3.5 text-primary" />
-                <span>{lang}</span>
+                <Globe className="w-3.5 h-3.5 text-primary animate-pulse" />
+                <span>{currentLanguage.nativeName}</span>
               </button>
               
               {isLangDropdownOpen && (
-                <div className="absolute bottom-6 left-0 bg-background border border-border p-1.5 rounded-xl shadow-lg flex flex-col space-y-1 min-w-[100px] z-50">
-                  {["English", "Hindi (हिन्दी)", "Kannada (ಕನ್ನಡ)"].map((l) => (
+                <div className="absolute bottom-7 left-0 bg-background border border-border p-1.5 rounded-xl shadow-xl flex flex-col space-y-1 min-w-[140px] z-50">
+                  {languages.map((l) => (
                     <button
-                      key={l}
+                      key={l.code}
                       onClick={() => {
-                        setLang(l.split(" ")[0]);
+                        setLanguage(l.code);
                         setIsLangDropdownOpen(false);
                       }}
-                      className="text-[11px] font-semibold text-left px-2.5 py-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground w-full cursor-pointer"
+                      className={`text-[11px] font-bold text-left px-2.5 py-1.5 rounded-lg transition-colors w-full cursor-pointer ${
+                        language === l.code
+                          ? "bg-primary-soft text-primary"
+                          : "hover:bg-muted text-muted-foreground hover:text-foreground"
+                      }`}
                     >
-                      {l}
+                      {l.nativeName} ({l.name})
                     </button>
                   ))}
                 </div>

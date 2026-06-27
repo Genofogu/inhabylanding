@@ -143,8 +143,6 @@ export default function OwnerSection() {
             <div className="pt-4 flex flex-col sm:flex-row justify-center lg:justify-start">
               <a
                 href="https://owner.inhaby.com"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center space-x-2 px-8 py-4 bg-primary hover:opacity-90 text-primary-foreground font-bold rounded-2xl transition-all active:scale-98 shadow-lg shadow-primary/15"
               >
                 <span>Go to Owner Portal</span>
