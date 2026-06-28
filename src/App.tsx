@@ -42,7 +42,7 @@ function AppContent() {
         <Route path="/savings" element={<SavingsCalculatorPage />} />
         <Route path="/verify" element={<VerificationPage />} />
         <Route path="/blog" element={<BlogListingPage />} />
-        <Route path="/blog/the-zero-brokerage-revolution" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPage />} />
       </Routes>
       {!isDemo && <Footer />}
       {!isDemo && <ThemeSwitcher />}
